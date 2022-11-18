@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "63701d2521afb2791cec8e5f"
+  },
+  "user_id": 0,
+  "email": "KarenDGarza@gmail.com",
+  "password": "wai1lie3Hae",
+  "first_name": "Karen",
+  "last_name": "Garza",
+  "is_host": true,
+  "favorite_properties": [
+    1,
+    2
+  ]
+},{
+  "_id": {
+    "$oid": "63701d2521afb2791cec8e60"
+  },
+  "user_id": 1,
+  "email": "StephenEGoodrich@gmail.com",
+  "password": "eephah5Zah",
+  "first_name": "Stephen",
+  "last_name": "Goodrich",
+  "is_host": true,
+  "favorite_properties": [
+    0,
+    3
+  ]
+},{
+  "_id": {
+    "$oid": "63701d2521afb2791cec8e61"
+  },
+  "user_id": 2,
+  "email": "JewelAWhite@gmail.com",
+  "password": "Booph8aip",
+  "first_name": "Jewel",
+  "last_name": "White",
+  "is_host": true,
+  "favorite_properties": [
+    1
+  ]
+},{
+  "_id": {
+    "$oid": "63701d2521afb2791cec8e62"
+  },
+  "user_id": 3,
+  "email": "MikeCCarey@gmail.com",
+  "password": "bileiso7CaL",
+  "first_name": "Mike",
+  "last_name": "Carey",
+  "is_host": true,
+  "favorite_properties": [
+    2,
+    3
+  ]
+},{
+  "_id": {
+    "$oid": "63701d2521afb2791cec8e63"
+  },
+  "user_id": 4,
+  "email": "JustinKMaloney@gmail.com",
+  "password": "mu6Xeagh",
+  "first_name": "Justin",
+  "last_name": "Maloney",
+  "is_host": false,
+  "favorite_properties": [
+    2
+  ]
+},{
+  "_id": {
+    "$oid": "63701d2521afb2791cec8e64"
+  },
+  "user_id": 5,
+  "email": "LindaJBethel@gmail.com",
+  "password": "Laejah3kieng",
+  "first_name": "Linda",
+  "last_name": "Bethel",
+  "is_host": false,
+  "favorite_properties": [
+    0
+  ]
+}]
