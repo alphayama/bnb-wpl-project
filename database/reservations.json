@@ -5,8 +5,16 @@
   "reservation_id": 0,
   "user_id": 4,
   "property_id": 3,
-  "start_date": 1662854400,
-  "end_date": 1663372800
+  "start_date": {
+    "$date": {
+      "$numberLong": "1669874400000"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1671516172800"
+    }
+  }
 },{
   "_id": {
     "$oid": "637022b721afb2791cec8e6d"
@@ -14,8 +22,16 @@
   "reservation_id": 1,
   "user_id": 5,
   "property_id": 3,
-  "start_date": 1668038400,
-  "end_date": 1671062400
+  "start_date": {
+    "$date": {
+      "$numberLong": "1668038400"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1671062400"
+    }
+  }
 },{
   "_id": {
     "$oid": "637022b721afb2791cec8e6e"
@@ -23,8 +39,16 @@
   "reservation_id": 2,
   "user_id": 4,
   "property_id": 2,
-  "start_date": 1650499200,
-  "end_date": 1650844800
+  "start_date": {
+    "$date": {
+      "$numberLong": "1650499200"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1650844800"
+    }
+  }
 },{
   "_id": {
     "$oid": "637022b721afb2791cec8e6f"
@@ -32,8 +56,16 @@
   "reservation_id": 3,
   "user_id": 2,
   "property_id": 1,
-  "start_date": 1656547200,
-  "end_date": 1657670400
+  "start_date": {
+    "$date": {
+      "$numberLong": "1656547200"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1657670400"
+    }
+  }
 },{
   "_id": {
     "$oid": "637022b721afb2791cec8e70"
@@ -41,8 +73,16 @@
   "reservation_id": 4,
   "user_id": 3,
   "property_id": 1,
-  "start_date": 1667952000,
-  "end_date": 1671926400
+  "start_date": {
+    "$date": {
+      "$numberLong": "1667952000"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1671926400"
+    }
+  }
 },{
   "_id": {
     "$oid": "637022b721afb2791cec8e71"
@@ -50,8 +90,16 @@
   "reservation_id": 5,
   "user_id": 2,
   "property_id": 0,
-  "start_date": 1643500800,
-  "end_date": 1643846400
+  "start_date": {
+    "$date": {
+      "$numberLong": "1643500800"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1643846400"
+    }
+  }
 },{
   "_id": {
     "$oid": "637022b721afb2791cec8e72"
@@ -59,6 +107,14 @@
   "reservation_id": 6,
   "user_id": 1,
   "property_id": 0,
-  "start_date": 1656547200,
-  "end_date": 1657670400
+  "start_date": {
+    "$date": {
+      "$numberLong": "1656547200"
+    }
+  },
+  "end_date": {
+    "$date": {
+      "$numberLong": "1657670400"
+    }
+  }
 }]
