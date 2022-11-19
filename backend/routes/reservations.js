@@ -3,7 +3,7 @@ var router = express.Router();
 
 var monk = require('monk');
 var db = monk('localhost:27017/travelite');
-var collection = db.get('properties');
+var collection = db.get('reservations');
 
 router.get('/', function(req, res) {
 	collection.find({}, function(err, videos){
