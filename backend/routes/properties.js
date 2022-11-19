@@ -49,8 +49,15 @@ router.put('/:id', function(req, res) {
 	//req.body is used to read form input
 	Properties.update({property_id: parseInt (req.params.id) },
 		{ $set: {
-		title: req.body.title,
-		genre: req.body.genre,
+		available: req.body.available,
+		host: req.body.host,
+		property_name: req.body.property_name,
+		location: req.body.location,
+		night_fee: req.body.night_fee,
+		cleaning_fee: req.body.cleaning_fee,
+		service_fee: req.body.service_fee,
+		bedrooms: req.body.bedrooms,
+		amenities: req.body.amenities,
 		description:req.body.desc }
 	}, function(err, video){
 		if (err) throw err;
@@ -61,7 +68,7 @@ router.put('/:id', function(req, res) {
 
 //delete
 router.delete('/:id', function(req, res) {
-	Properties.remove({ _id: req.params.id }, function(err, video){
+	Properties.remove({ property_id: parseInt(req.params.id) }, function(err, video){
 		if (err) throw err;
 	  	res.json(video);
 	});
