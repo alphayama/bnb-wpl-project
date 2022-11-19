@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
 
 // Gets a list of reservations with the given reservation_id
 router.get('/:id', function (req, res) {
-	collection.find({ reservation_id: req.params.id }, function (err, reservation) {
+	collection.find({ reservation_id: parseInt(req.params.id) }, function (err, reservation) {
 		if (err) throw err;
 		res.json(reservation);
 	});
