@@ -23,8 +23,8 @@ router.get('/', function(req, res) {
 	}
 });
 
-router.get('/:user_id', function(req, res) {
-	Properties.find({ host:parseInt( req.params.user_id) }, function(err, video){
+router.get('/:id', function(req, res) {
+	Properties.find({ property_id:parseInt( req.params.id) }, function(err, video){
 		if (err) throw err;
 	  	res.json(video);
 	});
