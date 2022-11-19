@@ -13,7 +13,7 @@
   "service_fee": 320,
   "bedrooms": 3,
   "amenities": [
-    "Kitchen,Wifi,Dedicated workspace,Free parking on premises,Hot tub,TV,Washer,Dryer,Air conditioning,Bathtub"
+    "Kitchen","Wifi","Dedicated workspace","Free parking on premises","Hot tub","TV","Washer","Dryer","Air conditioning","Bathtub"
   ],
   "images": {
     "p1": "property-1/p1.jpg",
@@ -59,7 +59,7 @@
   "service_fee": 245,
   "bedrooms": 3,
   "amenities": [
-    "Mountain view,Kitchen,Fast,Wifi,Free parking,Free washer and dryer,Bathtub,Private patio/balcony,Security cameras on property"
+    "Mountain view", "Kitchen","Fast Wifi","Free parking","Free washer and dryer","Bathtub","Private patio/balcony","Security cameras on property"
   ],
   "images": {
     "p1": "property-2/p1.jpg",
@@ -107,7 +107,7 @@
   "service_fee": 1001,
   "bedrooms": 6,
   "amenities": [
-    "Kitchen,Wifi,Free parking,Pool,Hot tub,Pets allowed,TV with standard cable,Washer,Dryer,Air conditioning"
+    "Kitchen","Wifi","Free parking","Pool","Hot tub","Pets allowed","TV with standard cable","Washer","Dryer","Air conditioning"
   ],
   "images": {
     "p1": "property-3/p1.jpg",
@@ -147,7 +147,7 @@
   "service_fee": 170,
   "bedrooms": 1,
   "amenities": [
-    "Lake view,Kitchen,Wifi,Free parking on premises,Private hot tub,TV,Washer,Dryer,Air conditioning"
+    "Lake view","Kitchen","Wifi","Free parking on premises","Private hot tub","TV","Washer","Dryer","Air conditioning"
   ],
   "images": {
     "p1": "property-4/p1.jpg",

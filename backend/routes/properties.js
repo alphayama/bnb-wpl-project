@@ -47,7 +47,7 @@ router.post('/', function(req, res) {
 //update
 router.put('/:id', function(req, res) {
 	//req.body is used to read form input
-	Properties.update({_id: req.params.id },
+	Properties.update({property_id: parseInt (req.params.id) },
 		{ $set: {
 		title: req.body.title,
 		genre: req.body.genre,
