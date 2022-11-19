@@ -3,17 +3,28 @@ var router = express.Router();
 
 var monk = require('monk');
 var db = monk('localhost:27017/travelite');
-var collection = db.get('properties');
+var Properties = db.get('properties');
+var Users = db.get('users');
+
+
 
 router.get('/', function(req, res) {
-	collection.find({}, function(err, videos){
-		if (err) throw err;
-	  	res.json(videos);
-	});
+	let host_id = req.query.host_id;
+	if (host_id != undefined){
+		Properties.find({ host:parseInt(host_id) }, function(err, video){
+			if (err) throw err;
+			  res.json(video);
+		});
+	} else{
+		Properties.find({}, function(err, video){
+			if (err) throw err;
+			res.json(video);
+		});
+	}
 });
 
-router.get('/:id', function(req, res) {
-	collection.find({ _id: req.params.id }, function(err, video){
+router.get('/:user_id', function(req, res) {
+	Properties.find({ host:parseInt( req.params.user_id) }, function(err, video){
 		if (err) throw err;
 	  	res.json(video);
 	});
@@ -22,7 +33,7 @@ router.get('/:id', function(req, res) {
 //insert
 router.post('/', function(req, res) {
 	//req.body is used to read form input
-	collection.insert({ 
+	Properties.insert({ 
 		title: req.body.title,
 		genre: req.body.genre,
 		description:req.body.desc
@@ -36,7 +47,7 @@ router.post('/', function(req, res) {
 //update
 router.put('/:id', function(req, res) {
 	//req.body is used to read form input
-	collection.update({_id: req.params.id },
+	Properties.update({_id: req.params.id },
 		{ $set: {
 		title: req.body.title,
 		genre: req.body.genre,
@@ -50,7 +61,7 @@ router.put('/:id', function(req, res) {
 
 //delete
 router.delete('/:id', function(req, res) {
-	collection.remove({ _id: req.params.id }, function(err, video){
+	Properties.remove({ _id: req.params.id }, function(err, video){
 		if (err) throw err;
 	  	res.json(video);
 	});
