@@ -5,54 +5,67 @@ var monk = require('monk');
 var db = monk('localhost:27017/travelite');
 var collection = db.get('reservations');
 
-router.get('/', function(req, res) {
-	collection.find({}, function(err, videos){
+// Gets a list of reservations. Optional userid query filters reservations for the given user id
+router.get('/', function (req, res) {
+	let userid = req.query.userid;
+	if (userid != undefined && (userid != null || userid != "")) {
+		collection.find({user_id:parseInt(userid)}, function (err, reservations) {
+			if (err) throw err;
+			res.json(reservations);
+		});
+	}
+	else {
+		collection.find({}, function (err, reservations) {
+			if (err) throw err;
+			res.json(reservations);
+		});
+	}
+});
+
+// Gets a list of reservations with the given reservation_id
+router.get('/:id', function (req, res) {
+	collection.find({ reservation_id: req.params.id }, function (err, reservation) {
 		if (err) throw err;
-	  	res.json(videos);
+		res.json(reservation);
 	});
 });
 
-router.get('/:id', function(req, res) {
-	collection.find({ _id: req.params.id }, function(err, video){
-		if (err) throw err;
-	  	res.json(video);
-	});
-});
-
-//insert
-router.post('/', function(req, res) {
+// Adds a new reservation
+router.post('/', function (req, res) {
 	//req.body is used to read form input
-	collection.insert({ 
+	collection.insert({
 		title: req.body.title,
 		genre: req.body.genre,
-		description:req.body.desc
-	}, function(err, video){
+		description: req.body.desc
+	}, function (err, reservation) {
 		if (err) throw err;
 		// if insert is successfull, it will return newly inserted object
-	  	res.json(video);
+		res.json(reservation);
 	});
 });
 
-//update
-router.put('/:id', function(req, res) {
+// Update
+router.put('/:id', function (req, res) {
 	//req.body is used to read form input
-	collection.update({_id: req.params.id },
-		{ $set: {
-		title: req.body.title,
-		genre: req.body.genre,
-		description:req.body.desc }
-	}, function(err, video){
-		if (err) throw err;
-		// if update is successfull, it will return updated object
-	  	res.json(video);
-	});
+	collection.update({ _id: req.params.id },
+		{
+			$set: {
+				title: req.body.title,
+				genre: req.body.genre,
+				description: req.body.desc
+			}
+		}, function (err, video) {
+			if (err) throw err;
+			// if update is successfull, it will return updated object
+			res.json(video);
+		});
 });
 
 //delete
-router.delete('/:id', function(req, res) {
-	collection.remove({ _id: req.params.id }, function(err, video){
+router.delete('/:id', function (req, res) {
+	collection.remove({ _id: req.params.id }, function (err, video) {
 		if (err) throw err;
-	  	res.json(video);
+		res.json(video);
 	});
 });
 
