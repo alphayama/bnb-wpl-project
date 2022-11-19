@@ -1,0 +1,43 @@
+Properties:-
+
+{
+  $jsonSchema: {
+    required: [
+      'property_id',
+      'host',
+      'property_name',
+      'location',
+      'night_fee'
+    ]
+  }
+}
+
+
+Reservations :-
+
+{
+  $jsonSchema: {
+    required: [
+      'reservation_id',
+      'user_id',
+      'property_id',
+      'start_date',
+      'end_date'
+    ]
+  }
+}
+
+Users:-
+
+{
+  $jsonSchema: {
+    required: [
+      'user_id',
+      'email',
+      'password',
+      'first_name',
+      'last_name',
+      'is_host'
+    ]
+  }
+}
