@@ -44,6 +44,8 @@ router.post('/', function (req, res) {
 		if (err) {
 			res.status(400)
 			res.json({ "message": err });
+		} else {
+			res.json(reservation)
 		}
 	});
 });

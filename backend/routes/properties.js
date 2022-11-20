@@ -34,13 +34,26 @@ router.get('/:id', function(req, res) {
 router.post('/', function(req, res) {
 	//req.body is used to read form input
 	Properties.insert({ 
-		title: req.body.title,
-		genre: req.body.genre,
-		description:req.body.desc
+		property_id: req.body.property_id,
+		available: req.body.available,
+		host: req.body.host,
+		property_name: req.body.property_name,
+		location: req.body.location,
+		description: req.body.description,
+		night_fee: req.body.night_fee,
+		cleaning_fee: req.body.cleaning_fee,
+		service_fee: req.body.service_fee,
+		bedrooms: req.body.bedrooms,
+		amenities: req.body.amenities,
+		images: req.body.images,
+		reviews: req.body.reviews
 	}, function(err, video){
-		if (err) throw err;
-		// if insert is successfull, it will return newly inserted object
-	  	res.json(video);
+		if (err) {
+			res.status(400)
+			res.json({ "message": err });
+		} else {
+			res.json(video)
+		}
 	});
 });
 
