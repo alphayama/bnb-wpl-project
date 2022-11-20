@@ -24,6 +24,7 @@ router.get('/', function (req, res) {
 
 // Gets a list of reservations with the given reservation_id
 router.get('/:id', function (req, res) {
+	console.log(req.params)
 	collection.find({ reservation_id: parseInt(req.params.id) }, function (err, reservation) {
 		if (err) throw err;
 		res.json(reservation);
@@ -34,13 +35,16 @@ router.get('/:id', function (req, res) {
 router.post('/', function (req, res) {
 	//req.body is used to read form input
 	collection.insert({
-		title: req.body.title,
-		genre: req.body.genre,
-		description: req.body.desc
+		reservation_id: req.body.reservation_id,
+		user_id: req.body.user_id,
+		property_id: req.body.property_id,
+		start_date: new Date(req.body.start_date),
+		end_date: new Date(req.body.end_date)
 	}, function (err, reservation) {
-		if (err) throw err;
-		// if insert is successfull, it will return newly inserted object
-		res.json(reservation);
+		if (err) {
+			res.status(400)
+			res.json({ "message": err });
+		}
 	});
 });
 
