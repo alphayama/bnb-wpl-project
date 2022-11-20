@@ -23,7 +23,24 @@ Reservations :-
       'property_id',
       'start_date',
       'end_date'
-    ]
+    ],
+    properties: {
+      reservation_id: {
+        bsonType: 'int'
+      },
+      user_id: {
+        bsonType: 'int'
+      },
+      property_id: {
+        bsonType: 'int'
+      },
+      start_date: {
+        bsonType: 'date'
+      },
+      end_date: {
+        bsonType: 'date'
+      }
+    }
   }
 }
 
