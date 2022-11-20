@@ -9,7 +9,7 @@ var collection = db.get('reservations');
 router.get('/', function (req, res) {
 	let userid = req.query.userid;
 	if (userid != undefined && (userid != null || userid != "")) {
-		collection.find({user_id:parseInt(userid)}, function (err, reservations) {
+		collection.find({ user_id: parseInt(userid) }, function (err, reservations) {
 			if (err) throw err;
 			res.json(reservations);
 		});
@@ -50,34 +50,33 @@ router.post('/', function (req, res) {
 	});
 });
 
-// Update
+// Update an existing reservation
 router.put('/:id', function (req, res) {
 	//req.body is used to read form input
-	collection.update({ _id: req.params.id },
+	collection.update({ reservation_id: parseInt(req.params.id) },
 		{
 			$set: {
-				title: req.body.title,
-				genre: req.body.genre,
-				description: req.body.desc
+				user_id: req.body.user_id,
+				property_id: req.body.property_id,
+				start_date: new Date(req.body.start_date),
+				end_date: new Date(req.body.end_date)
 			}
-		}, function (err, video) {
-			if (err) throw err;
-			// if update is successfull, it will return updated object
-			res.json(video);
+		}, function (err, reservation) {
+			if (err) {
+				res.status(400)
+				res.json({ "message": err });
+			} else {
+				res.json(reservation)
+			}
 		});
 });
 
-//delete
+// Delete a reservation
 router.delete('/:id', function (req, res) {
-	collection.remove({ _id: req.params.id }, function (err, video) {
+	collection.remove({ reservation_id: parseInt(req.params.id) }, function (err, reservation) {
 		if (err) throw err;
-		res.json(video);
+		res.json(reservation);
 	});
 });
-
-
-
-
-
 
 module.exports = router;
