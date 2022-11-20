@@ -72,10 +72,13 @@ router.put('/:id', function(req, res) {
 		bedrooms: req.body.bedrooms,
 		amenities: req.body.amenities,
 		description:req.body.desc }
-	}, function(err, video){
-		if (err) throw err;
-		// if update is successfull, it will return updated object
-	  	res.json(video);
+	}, function(err, property){
+		if (err) {
+			res.status(400)
+			res.json({ "message": err });
+		} else {
+			res.json(property)
+		}
 	});
 });
 
