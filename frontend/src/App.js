@@ -133,7 +133,7 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
             <div onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
               <h6>{bnb.location}</h6>
               <h6><em>${bnb.night_fee}/Night</em></h6>
-              <p>{bnb.description.length <= 300 ? bnb.description : bnb.description.substring(0, 298) + "..."}</p>
+              <p>{bnb.description?.length <= 300 ? bnb.description : bnb.description?.substring(0, 298) + "..."}</p>
             </div>
             <Button variant="secondary" onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
               Details
