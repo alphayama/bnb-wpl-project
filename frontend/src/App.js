@@ -86,8 +86,8 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
   const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
 
   bnbproperties.forEach(bnb => {
-    if (bnb.property_name.toLowerCase().indexOf(searchQuery.toLowerCase()) === -1 &&
-      bnb.location.toLowerCase().indexOf(searchQuery.toLowerCase()) === -1) {
+    if (bnb?.property_name?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1 &&
+      bnb?.location?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1) {
       return;
     }
     else {
