@@ -33,21 +33,33 @@ router.get('/:id', function (req, res) {
 
 // Adds a new reservation
 router.post('/', function (req, res) {
-	//req.body is used to read form input
-	collection.insert({
-		reservation_id: req.body.reservation_id,
-		user_id: req.body.user_id,
-		property_id: req.body.property_id,
-		start_date: new Date(req.body.start_date),
-		end_date: new Date(req.body.end_date)
-	}, function (err, reservation) {
+	collection.find({ property_id: req.body.property_id }, function (err, reservations) {
 		if (err) {
 			res.status(400)
-			res.json({ "message": err });
+			return res.json({ "message": err });
 		} else {
-			res.json(reservation)
+			for (const reservation in reservations) {
+				data = reservations[reservation]
+				if (!(new Date(req.body.start_date) > data["end_date"] || new Date(req.body.end_date) < data["start_date"])) {
+					return res.json({ "message": "this date range is not available" })
+				}
+			}
+			collection.insert({
+				reservation_id: req.body.reservation_id,
+				user_id: req.body.user_id,
+				property_id: req.body.property_id,
+				start_date: new Date(req.body.start_date),
+				end_date: new Date(req.body.end_date)
+			}, function (err, reservation) {
+				if (err) {
+					res.status(400)
+					return res.json({ "message": err });
+				} else {
+					return res.json(reservation)
+				}
+			});
 		}
-	});
+	})
 });
 
 // Update an existing reservation
