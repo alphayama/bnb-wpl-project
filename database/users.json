@@ -7,11 +7,7 @@
   "password": "wai1lie3Hae",
   "first_name": "Karen",
   "last_name": "Garza",
-  "is_host": true,
-  "favorite_properties": [
-    1,
-    2
-  ]
+  "is_host": true
 },{
   "_id": {
     "$oid": "63701d2521afb2791cec8e60"
@@ -21,11 +17,7 @@
   "password": "eephah5Zah",
   "first_name": "Stephen",
   "last_name": "Goodrich",
-  "is_host": true,
-  "favorite_properties": [
-    0,
-    3
-  ]
+  "is_host": true
 },{
   "_id": {
     "$oid": "63701d2521afb2791cec8e61"
@@ -35,10 +27,7 @@
   "password": "Booph8aip",
   "first_name": "Jewel",
   "last_name": "White",
-  "is_host": true,
-  "favorite_properties": [
-    1
-  ]
+  "is_host": true
 },{
   "_id": {
     "$oid": "63701d2521afb2791cec8e62"
@@ -48,11 +37,7 @@
   "password": "bileiso7CaL",
   "first_name": "Mike",
   "last_name": "Carey",
-  "is_host": true,
-  "favorite_properties": [
-    2,
-    3
-  ]
+  "is_host": true
 },{
   "_id": {
     "$oid": "63701d2521afb2791cec8e63"
@@ -62,10 +47,7 @@
   "password": "mu6Xeagh",
   "first_name": "Justin",
   "last_name": "Maloney",
-  "is_host": false,
-  "favorite_properties": [
-    2
-  ]
+  "is_host": false
 },{
   "_id": {
     "$oid": "63701d2521afb2791cec8e64"
@@ -75,8 +57,5 @@
   "password": "Laejah3kieng",
   "first_name": "Linda",
   "last_name": "Bethel",
-  "is_host": false,
-  "favorite_properties": [
-    0
-  ]
+  "is_host": false
 }]

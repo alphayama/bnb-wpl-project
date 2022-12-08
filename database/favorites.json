@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abe9"
+  },
+  "user_id": 0,
+  "property_id": 1
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abea"
+  },
+  "user_id": 0,
+  "property_id": 2
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abeb"
+  },
+  "user_id": 1,
+  "property_id": 0
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abec"
+  },
+  "user_id": 1,
+  "property_id": 3
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abed"
+  },
+  "user_id": 2,
+  "property_id": 1
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abee"
+  },
+  "user_id": 3,
+  "property_id": 2
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abef"
+  },
+  "user_id": 3,
+  "property_id": 3
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abf0"
+  },
+  "user_id": 4,
+  "property_id": 2
+},{
+  "_id": {
+    "$oid": "63923fab88425a73cd71abf1"
+  },
+  "user_id": 5,
+  "property_id": 0
+}]
