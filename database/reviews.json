@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abd4"
+  },
+  "property_id": 0,
+  "user_id": 0,
+  "stars": 5,
+  "comments": "Great country living vibe! The location was about 1 hr 30 minutes from Dallas city center so pretty convenient for a weekend getaway. Clean and tastefully decorated. Would rent again."
+},{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abd5"
+  },
+  "property_id": 0,
+  "user_id": 1,
+  "stars": 4,
+  "comments": "The cabin is located in quiet and peaceful neighborhood. It is very clean and comfortable and was perfectly equipped for our family of 4 plus dog."
+},{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abd6"
+  },
+  "property_id": 1,
+  "user_id": 2,
+  "stars": 5,
+  "comments": "N/A"
+},{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abd7"
+  },
+  "property_id": 1,
+  "user_id": 3,
+  "stars": 4,
+  "comments": "Beautiful cabin for our honeymoon would definitely recommend to any future travelers"
+},{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abd8"
+  },
+  "property_id": 2,
+  "user_id": 4,
+  "stars": 2,
+  "comments": "The lodge was completely flooded during our visit and the host was not very communicative"
+},{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abd9"
+  },
+  "property_id": 3,
+  "user_id": 4,
+  "stars": 5,
+  "comments": "My kids loved this wonderful treehouse and we had a blast!"
+},{
+  "_id": {
+    "$oid": "63915bf088425a73cd71abda"
+  },
+  "property_id": 3,
+  "user_id": 5,
+  "stars": 4,
+  "comments": "I would take my family here again (the treehouse does get shaky during storms)"
+}]

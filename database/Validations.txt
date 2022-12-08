@@ -44,6 +44,19 @@ Reservations :-
   }
 }
 
+Reviews:-
+
+{
+  $jsonSchema: {
+    required: [
+      'property_id',
+      'user_id',
+      'stars',
+      'comments'
+    ]
+  }
+}
+
 Users:-
 
 {
