@@ -1,60 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+// import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
+import Description from "./Description";
 
-function DescriptionModal(props) {
-  console.log({ props });
-  return (
-    // props.showModal ?
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          {props?.bnb?.property_name}
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h5>
-          <i class="bi bi-geo-alt"></i>  <em>{props?.bnb?.location}</em>
-        </h5>
-        <hr />
-        <h5><i class="bi bi-cash"></i>  <b>${props?.bnb?.night_fee}</b> / Night</h5>
-        <ul>
-          <li><em>Cleaning Fee:</em> ${props?.bnb?.cleaning_fees}</li>
-          <li><em>Service Fee:</em> ${props?.bnb?.service_fees}</li>
-        </ul>
-        <hr />
-        <h5><i class="bi bi-square-half"></i>  Bedrooms: <b>{props?.bnb?.bedrooms}</b></h5>
-        <hr />
-        <h5><i class="bi bi-info-circle"></i>  About</h5>
-        <p>
-          {props?.bnb?.description}
-        </p>
-        <hr />
-        <h5><i class="bi bi-stars"></i>  Amenities</h5>
-        <ul>
-          {props?.bnb?.amenities.map((amenity) => <li>{amenity}</li>)}
-        </ul>
-        <hr />
-        <h5><i class="bi bi-camera"></i>  Gallery</h5>
-        {props?.bnb?.images!=null ? <div class="row">
-          {Object.entries(props?.bnb?.images).map(([k, v])=>
-            <div class="col-6" style={{"padding":"10px"}}>
-            <img src={v} class="d-block w-100" />
-          </div>)}
-        </div> : <></>}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
 function Filter({ filterAvailable, searchQuery, onFilterAvailableChange, onSearchQueryChange }) {
   return (
@@ -83,6 +32,7 @@ function Filter({ filterAvailable, searchQuery, onFilterAvailableChange, onSearc
 function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
   const filteredProperties = []
   const [modalShow, setModalShow] = React.useState(false);
+  const [fullscreen, setFullscreen] = useState(true);
   const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
 
   bnbproperties.forEach(bnb => {
@@ -95,6 +45,7 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
     }
   }
   );
+  
   return (
     <div class="col-md-12 col-lg-12 col-12">
       <div class="row">
@@ -138,9 +89,10 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
             <Button variant="secondary" onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
               Details
             </Button>
-            <DescriptionModal
+            <Description
               show={modalShow}
               onHide={() => setModalShow(false)}
+              fullscreen = {fullscreen}
               bnb={currentBnbProperty}
             />
           </div>)}
