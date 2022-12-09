@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 import Description from "./Description";
+import BnBProperties from "./BnBProperties";
+import Reservations from "./Reservations";
 
 
 function Filter({ filterAvailable, searchQuery, onFilterAvailableChange, onSearchQueryChange }) {
@@ -29,84 +31,15 @@ function Filter({ filterAvailable, searchQuery, onFilterAvailableChange, onSearc
   );
 }
 
-function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
-  const filteredProperties = []
-  const [modalShow, setModalShow] = React.useState(false);
-  const [fullscreen, setFullscreen] = useState(true);
-  const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
-
-  bnbproperties.forEach(bnb => {
-    if (bnb?.property_name?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1 &&
-      bnb?.location?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1) {
-      return;
-    }
-    else {
-      filteredProperties.push(bnb)
-    }
-  }
-  );
-
-  return (
-    <div class="col">
-      <div class="row cont-row" style={{ "margin": "0px"}}>
-        {filteredProperties.map((bnb) =>
-          <div class="col-lg-5 col-12 p-5 bg-light border rounded-3 proptron">
-            <div id={"carousel" + bnb.property_id} class="carousel slide" data-bs-ride="carousel"
-              style={{ "marginBottom": "5px" }}>
-              <div class="carousel-indicators" >
-                <button type="button" data-bs-target={"#carousel" + bnb.property_id} data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label={"Slide " + 0}></button>
-                {Object.entries(bnb.images).slice(1).map(([k, v]) =>
-                  <button type="button" data-bs-target={"#carousel" + bnb.property_id} data-bs-slide-to={("" + k.substring(1)) - 1}
-                    aria-current="true" aria-label={"Slide " + k.substring(1)}></button>)}
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src={bnb.images["p1"]} class="d-block w-100" alt="..." onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }} />
-                </div>
-                {Object.entries(bnb.images).slice(1).map(([k, v]) => <div class="carousel-item">
-                  <img src={v} class="d-block w-100" alt="..." onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }} />
-                </div>)}
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target={"#carousel" + bnb.property_id}
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target={"#carousel" + bnb.property_id}
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <br />
-            <h3 onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>{bnb.property_name}</h3>
-            <div onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
-              <h6>{bnb.location}</h6>
-              <h6><em>${bnb.night_fee}/Night</em></h6>
-              <p>{bnb.description?.length <= 300 ? bnb.description : bnb.description?.substring(0, 298) + "..."}</p>
-            </div>
-            <Button variant="secondary" onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
-              Details
-            </Button>
-            <Description
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-              fullscreen={fullscreen}
-              bnb={currentBnbProperty}
-            />
-          </div>)}
-      </div>
-    </div>
-  )
-};
-
 function App(props) {
 
 
   const [bnbproperties, setBnbProperties] = useState([]);
   const [filterAvailable, setFilterAvailable] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showBnBProperties, setShowBnBProperties] = useState(true);
+  const [showReservations, setShowReservations] = useState(true);
+  const [showFavorites, setShowFavorites] = useState(true);
 
   useEffect(() => {
     componentDidMount();
@@ -166,24 +99,24 @@ function App(props) {
         </div>
       </nav>
       <div class="row">
-        <div class="col-lg-1  col-12" style={{ "background-color": "#0f4b73"}}>
+        <div class="col-lg-1  col-12" style={{ "background-color": "#0f4b73" }}>
           <div class="row">
             <div class="col-12 sticky" style={{ "background-color": "#0f4b73", "padding-left": "20px" }}>
               <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center custom-sidebar">
                   <li class="nav-item">
-                    <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="All Properties">
-                      <i class="bi bi-house" style={{ "font-size": "30px"}}></i><br/>Home
+                    <a onClick={() => { setShowBnBProperties(true); setShowFavorites(false); setShowReservations(false); }} class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="All Properties">
+                      <i class="bi bi-house" style={{ "font-size": "30px" }}></i><br />Home
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Favorite Properties">
-                      <i class="bi bi-bookmark-heart" style={{ "font-size": "30px"}}></i><br/>Favorites
+                    <a onClick={() => { setShowBnBProperties(false); setShowFavorites(true); setShowReservations(false); }} class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Favorite Properties">
+                      <i class="bi bi-bookmark-heart" style={{ "font-size": "30px" }}></i><br />Favorites
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="History">
-                    <i class="bi bi-clock-history" style={{ "font-size": "30px"}}></i><br/>History
+                    <a onClick={() => { setShowBnBProperties(false); setShowFavorites(false); setShowReservations(true); }} class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="History">
+                      <i class="bi bi-clock-history" style={{ "font-size": "30px" }}></i><br />My Reservations
                     </a>
                   </li>
                 </ul>
@@ -201,13 +134,21 @@ function App(props) {
             </div>
           </div>
         </div>
-        <div class="col-lg-11 col-12" style={{ "padding": "25px"}}>
-        <BnBProperties
-          bnbproperties={bnbproperties}
-          filterAvailable={filterAvailable}
-          searchQuery={searchQuery}
-        />
-        </div>
+        (showBnBProperties)?(
+        <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
+          <BnBProperties
+            bnbproperties={bnbproperties}
+            filterAvailable={filterAvailable}
+            searchQuery={searchQuery}
+          />
+        </div>):(
+        (showFavorites)?(
+        {/* Favorite */}
+        ):(
+        <Reservations
+          userid={4} />
+        )
+        )
         {/* <Filter
         props={props.onHide}
         filterAvailable={filterAvailable}
@@ -217,23 +158,23 @@ function App(props) {
       /> */}
       </div>
       <div class="row">
-      <div class="container-12 footer-container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-          <p class="col-md-4 mb-0 text-muted">© 2022 Travelite Inc.</p>
+        <div class="container-12 footer-container">
+          <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-muted">© 2022 Travelite Inc.</p>
 
-          <a href="#"
-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <img src="logo2.png" width="80" />
-          </a>
+            <a href="#"
+              class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+              <img src="logo2.png" width="80" />
+            </a>
 
-          <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Currency (USD)</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Language (EN-US)</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-          </ul>
-        </footer>
-      </div>
+            <ul class="nav col-md-4 justify-content-end">
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Currency (USD)</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Language (EN-US)</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+          </footer>
+        </div>
       </div>
     </div>
   )
