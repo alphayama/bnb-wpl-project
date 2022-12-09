@@ -24,12 +24,12 @@
   "property_id": 3,
   "start_date": {
     "$date": {
-      "$numberLong": "1641021638400"
+      "$numberLong": "1668038400"
     }
   },
   "end_date": {
     "$date": {
-      "$numberLong": "1642320662400"
+      "$numberLong": "1671062400"
     }
   }
 },{
@@ -41,12 +41,12 @@
   "property_id": 2,
   "start_date": {
     "$date": {
-      "$numberLong": "1611109699200"
+      "$numberLong": "1650499200"
     }
   },
   "end_date": {
     "$date": {
-      "$numberLong": "1613788444800"
+      "$numberLong": "1650844800"
     }
   }
 },{
@@ -58,12 +58,12 @@
   "property_id": 1,
   "start_date": {
     "$date": {
-      "$numberLong": "1653278947200"
+      "$numberLong": "1656547200"
     }
   },
   "end_date": {
     "$date": {
-      "$numberLong": "1653625670400"
+      "$numberLong": "1657670400"
     }
   }
 },{
@@ -75,12 +75,12 @@
   "property_id": 1,
   "start_date": {
     "$date": {
-      "$numberLong": "1596007152000"
+      "$numberLong": "1667952000"
     }
   },
   "end_date": {
     "$date": {
-      "$numberLong": "1597220726400"
+      "$numberLong": "1671926400"
     }
   }
 },{
@@ -92,12 +92,12 @@
   "property_id": 0,
   "start_date": {
     "$date": {
-      "$numberLong": "1605141100800"
+      "$numberLong": "1643500800"
     }
   },
   "end_date": {
     "$date": {
-      "$numberLong": "1605746246400"
+      "$numberLong": "1643846400"
     }
   }
 },{
@@ -109,12 +109,12 @@
   "property_id": 0,
   "start_date": {
     "$date": {
-      "$numberLong": "1656734947200"
+      "$numberLong": "1656547200"
     }
   },
   "end_date": {
     "$date": {
-      "$numberLong": "1657427270400"
+      "$numberLong": "1657670400"
     }
   }
 }]
