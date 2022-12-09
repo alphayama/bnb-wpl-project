@@ -85,10 +85,24 @@ router.put('/:id', function (req, res) {
 
 // Delete a reservation
 router.delete('/:id', function (req, res) {
-	collection.remove({ reservation_id: parseInt(req.params.id) }, function (err, reservation) {
-		if (err) throw err;
-		res.json(reservation);
-	});
+	collection.find({ reservation_id: parseInt(req.params.id) }, function (err, reservation) {
+		if (err) {
+			res.status(400)
+			return res.json({ "message": err });
+		} else {
+			const currentDate = new Date()
+			const startDate = new Date(reservation[0]["start_date"])
+			const modifiedStartDate = new Date(startDate.setHours(startDate.getHours() - 48))
+			if (currentDate.getTime() <= modifiedStartDate.getTime()) {
+				collection.remove({ reservation_id: parseInt(req.params.id) }, function (err, reservation) {
+					if (err) throw err;
+					return res.json(reservation);
+				});
+			} else {
+				return res.json({ "message": "the reservation is within 48 hours" });
+			}
+		}
+	})
 });
 
 module.exports = router;
