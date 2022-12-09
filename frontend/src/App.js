@@ -134,23 +134,24 @@ function App(props) {
             </div>
           </div>
         </div>
-        {(showBnBProperties) ? (
-          <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
+        <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
+          {(showBnBProperties) ? (
             <BnBProperties
               bnbproperties={bnbproperties}
               filterAvailable={filterAvailable}
               searchQuery={searchQuery}
             />
-          </div>) : (
-          (showFavorites) ? (
-            {/* Favorite */ }
           ) : (
-            <Reservations
-              userid={4}
-              bnbproperties={bnbproperties}
-            />
-          )
-        )}
+            (showFavorites) ? (
+              {/* Favorite */ }
+            ) : (
+              <Reservations
+                userid={4}
+                bnbproperties={bnbproperties}
+              />
+            )
+          )}
+        </div>
         {/* <Filter
         props={props.onHide}
         filterAvailable={filterAvailable}
@@ -159,25 +160,25 @@ function App(props) {
         onSearchQueryChange={setSearchQuery}
       /> */}
       </div>
-      <div class="row">
-        <div class="container-12 footer-container">
-          <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <p class="col-md-4 mb-0 text-muted">© 2022 Travelite Inc.</p>
+      {/* <div class="row" style={{ "position": "fixed","left":"0","bottom":"0", "right":"0"}}> */}
+      <div class="container-12 footer-container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top" style={{ "margin": "0px"}}>
+          <p class="col-md-4 mb-0 text-muted">© 2022 Travelite Inc.</p>
 
-            <a href="#"
-              class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-              <img src="logo2.png" width="80" />
-            </a>
+          <a href="#"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <img src="logo2.png" width="80" />
+          </a>
 
-            <ul class="nav col-md-4 justify-content-end">
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Currency (USD)</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Language (EN-US)</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-            </ul>
-          </footer>
-        </div>
+          <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Currency (USD)</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Language (EN-US)</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+          </ul>
+        </footer>
       </div>
+      {/* </div> */}
     </div>
   )
 }
