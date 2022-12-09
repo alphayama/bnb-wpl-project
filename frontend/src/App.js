@@ -134,20 +134,22 @@ function App(props) {
             </div>
           </div>
         </div>
-        {(showBnBProperties)?(
-        <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
-          <BnBProperties
-            bnbproperties={bnbproperties}
-            filterAvailable={filterAvailable}
-            searchQuery={searchQuery}
-          />
-        </div>):(
-        (showFavorites)?(
-        {/* Favorite */}
-        ):(
-        <Reservations
-          userid={4} />
-        )
+        {(showBnBProperties) ? (
+          <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
+            <BnBProperties
+              bnbproperties={bnbproperties}
+              filterAvailable={filterAvailable}
+              searchQuery={searchQuery}
+            />
+          </div>) : (
+          (showFavorites) ? (
+            {/* Favorite */ }
+          ) : (
+            <Reservations
+              userid={4}
+              bnbproperties={bnbproperties}
+            />
+          )
         )}
         {/* <Filter
         props={props.onHide}
