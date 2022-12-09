@@ -45,12 +45,12 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
     }
   }
   );
-  
+
   return (
-    <div class="col-md-12 col-lg-12 col-12">
-      <div class="row">
+    <div class="col">
+      <div class="row cont-row" style={{ "margin": "0px"}}>
         {filteredProperties.map((bnb) =>
-          <div class="col-lg-5 col-12 h-100 p-5 bg-light border rounded-3 proptron">
+          <div class="col-lg-5 col-12 p-5 bg-light border rounded-3 proptron">
             <div id={"carousel" + bnb.property_id} class="carousel slide" data-bs-ride="carousel"
               style={{ "marginBottom": "5px" }}>
               <div class="carousel-indicators" >
@@ -92,7 +92,7 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
             <Description
               show={modalShow}
               onHide={() => setModalShow(false)}
-              fullscreen = {fullscreen}
+              fullscreen={fullscreen}
               bnb={currentBnbProperty}
             />
           </div>)}
@@ -133,11 +133,11 @@ function App(props) {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="col-lg-9 col-12" style={{ display: "flex" }}>
-                <div class="col-lg-12 col-12 d-flex flex-column">
-                  {/* <label style={{ color: "white", width: "100%" }}>DESTINATION</label> */}
-                  <input id="destination" style={{ margin: "10px" }} type="text" name="Destination" placeholder="Search Properties" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                </div>
-                {/* <div class="col-lg-5 col-12 d-flex" >
+              <div class="col-lg-12 col-12 d-flex flex-column">
+                {/* <label style={{ color: "white", width: "100%" }}>DESTINATION</label> */}
+                <input id="destination" style={{ margin: "10px" }} type="text" name="Destination" placeholder="Search Properties" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+              </div>
+              {/* <div class="col-lg-5 col-12 d-flex" >
                   <div class="row" style={{ margin: "0", padding: "0" }}>
                     <div class="col-lg-6 col-12 d-flex flex-column" >
                       <label style={{ color: "white" }}>CHECK-IN</label>
@@ -153,7 +153,7 @@ function App(props) {
                   <label style={{ color: "white" }}>NO. OF GUESTS</label>
                   <input type="number" name="Guests" placeholder="No. of Guests" />
                 </div> */}
-              
+
             </div>
             <div class="col-lg-3 col-12" style={{
               display: "flex",
@@ -165,20 +165,58 @@ function App(props) {
           </div>
         </div>
       </nav>
-      <br />
-      <BnBProperties
-        bnbproperties={bnbproperties}
-        filterAvailable={filterAvailable}
-        searchQuery={searchQuery}
-      />
-      <br />
-      {/* <Filter
+      <div class="row">
+        <div class="col-lg-1  col-12" style={{ "background-color": "#0f4b73"}}>
+          <div class="row">
+            <div class="col-12 sticky" style={{ "background-color": "#0f4b73", "padding-left": "20px" }}>
+              <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">
+                <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center custom-sidebar">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="All Properties">
+                      <i class="bi bi-house" style={{ "font-size": "30px"}}></i><br/>Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Favorite Properties">
+                      <i class="bi bi-bookmark-heart" style={{ "font-size": "30px"}}></i><br/>Favorites
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="History">
+                    <i class="bi bi-clock-history" style={{ "font-size": "30px"}}></i><br/>History
+                    </a>
+                  </li>
+                </ul>
+                {/* <div class="dropdown custom-sidebar">
+                    <a href="#" class="d-flex align-items-center justify-content-center p-3 text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi-person-circle h2"></i>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                    </ul>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-11 col-12" style={{ "padding": "25px"}}>
+        <BnBProperties
+          bnbproperties={bnbproperties}
+          filterAvailable={filterAvailable}
+          searchQuery={searchQuery}
+        />
+        </div>
+        {/* <Filter
         props={props.onHide}
         filterAvailable={filterAvailable}
         searchQuery={searchQuery}
         onFilterAvailableChange={setFilterAvailable}
         onSearchQueryChange={setSearchQuery}
       /> */}
+      </div>
+      <div class="row">
       <div class="container-12 footer-container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <p class="col-md-4 mb-0 text-muted">© 2022 Travelite Inc.</p>
@@ -195,6 +233,7 @@ function App(props) {
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
           </ul>
         </footer>
+      </div>
       </div>
     </div>
   )
