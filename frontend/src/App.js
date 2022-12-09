@@ -134,7 +134,7 @@ function App(props) {
             </div>
           </div>
         </div>
-        (showBnBProperties)?(
+        {(showBnBProperties)?(
         <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
           <BnBProperties
             bnbproperties={bnbproperties}
@@ -148,7 +148,7 @@ function App(props) {
         <Reservations
           userid={4} />
         )
-        )
+        )}
         {/* <Filter
         props={props.onHide}
         filterAvailable={filterAvailable}
