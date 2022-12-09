@@ -6,6 +6,9 @@ import ListGroup from "react-bootstrap/ListGroup";
 function Reservations(props) {
     const [reservations, setReservations] = useState(null);
     useEffect(() => {
+        componentDidMount();
+    }, [])
+    const componentDidMount = () => {
         axios.get('http://localhost:3000/reservations?userid=' + props.userid)
             .then(response => {
                 const sortedData = response.data.sort((a, b) => {
@@ -18,29 +21,29 @@ function Reservations(props) {
                     return 0;
                 });
                 setReservations(sortedData)
-                console.log(reservations)
             }).catch(error => {
                 console.log(error);
             })
-    });
+    }
     return (
         <div>
             <ListGroup as="ol">
-                {reservations?.map((reservation) =>
-                    <ListGroup.Item
+                {reservations?.map((reservation) => {
+                    const item = props.bnbproperties.find(property => property.property_id === reservation.property_id);
+                    return (<ListGroup.Item
                         as="li"
                         className="d-flex justify-content-between align-items-start"
                     >
                         <div className="ms-2 me-auto">
-                            <div className="fw-bold">Modern test - Barrel Sauna - Hot Tub - Mountains</div>
-                            Blue Ridge, Georgia, United States
-                            <div className="fst-italic">{reservation?.start_date} - {reservation?.end_date}</div>
+                            <div className="fw-bold">{item.property_name}</div>
+                            {item.location}
+                            <div className="fst-italic">{new Date(reservation?.start_date).toDateString().toLocaleString('en-US')} - {new Date(reservation?.end_date).toDateString().toLocaleString('en-US')}</div>
                         </div>
                         <Badge bg="danger" pill>
                             Cancel Reservation
                         </Badge>
-                    </ListGroup.Item>
-                )}
+                    </ListGroup.Item>)
+                })}
             </ListGroup>
         </div>
 
