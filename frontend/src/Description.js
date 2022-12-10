@@ -48,7 +48,7 @@ function Description(props) {
                 </div> : <></>}
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="warning" onClick={props.onHide}><i class="bi bi-heart"></i> Add to Favorites</Button>
+                {(props.isFavorite)?(<Button variant="warning" onClick={props.onHide}><i class="bi bi-heart"></i> Add to Favorites</Button>):(<></>)}
                 <Button variant="success" onClick={props.onHide}><i class="bi bi-bag-plus"></i> Book Property</Button>
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>

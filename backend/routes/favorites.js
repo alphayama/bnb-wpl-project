@@ -8,8 +8,15 @@ var collection = db.get('favorites');
 // Gets a list of favorites. Optional userid query filters favorites for the given user id
 router.get('/', function (req, res) {
     let userid = req.query.userid;
+    let propertyid = req.query.propertyid;
     if (userid != undefined && (userid != null || userid != "")) {
         collection.find({ user_id: parseInt(userid) }, function (err, favorites) {
+            if (err) throw err;
+            res.json(favorites);
+        });
+    }
+    else if (propertyid != undefined && (propertyid != null || propertyid != "")) {
+        collection.find({ property_id: parseInt(propertyid) }, function (err, favorites) {
             if (err) throw err;
             res.json(favorites);
         });

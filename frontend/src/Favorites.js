@@ -1,29 +1,60 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Description from "./Description";
 
-function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
-    const filteredProperties = []
+function Favorites(props) {
+    const favoriteProperties = new Set()
     const [modalShow, setModalShow] = React.useState(false);
     const [fullscreen, setFullscreen] = useState(true);
     const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
+    const [favorites, setFavorites] = useState([]);
+    const isFavorite=useState(false);
 
-    bnbproperties.forEach(bnb => {
-        if (bnb?.property_name?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1 &&
-            bnb?.location?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1) {
-            return;
-        }
-        else {
-            filteredProperties.push(bnb)
-        }
+    useEffect(() => {
+        componentDidMount();
+    }, [])
+    const componentDidMount = () => {
+        axios.get('http://localhost:3000/favorites?userid=' + props.userid)
+            .then(response => {
+                setFavorites(response.data)
+            }).catch(error => {
+                console.log(error);
+            })
     }
-    );
+
+    if(favorites?.length == 0)
+        return(
+            <div>
+                <h6 style={{"color":"red"}}>You don't have any favorite properties.</h6>
+            </div>
+        )
+
+    // console.log(favorites)
+
+    favorites?.forEach(favorite => {
+        
+            favoriteProperties.add(favorite.property_id)
+    });
+
+    // bnbproperties.forEach(bnb => {
+    //     if (bnb?.property_name?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1 &&
+    //         bnb?.location?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1) {
+    //         return;
+    //     }
+    //     else {
+    //         filteredProperties.push(bnb)
+    //     }
+    // }
+    // );
+    // console.log(favoriteProperties.at(0))
+    
 
     return (
         <div class="col">
             <div class="row cont-row" style={{ "margin": "0px" }}>
-                {filteredProperties.map((bnb) =>
-                    <div class="col-lg-5 col-12 p-5 bg-light border rounded-3 proptron">
+                {props.bnbproperties.map((bnb) =>
+                    (favoriteProperties.has(bnb.property_id))?(<div class="col-lg-5 col-12 p-5 bg-light border rounded-3 proptron">
                         <div id={"carousel" + bnb.property_id} class="carousel slide" data-bs-ride="carousel"
                             style={{ "marginBottom": "5px" }}>
                             <div class="carousel-indicators" >
@@ -67,12 +98,13 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
                             onHide={() => setModalShow(false)}
                             fullscreen={fullscreen}
                             bnb={currentBnbProperty}
-                            isFavorite={true}
+                            isFavorite={false}
                         />
-                    </div>)}
+                    </div>):(<></>)
+                    )}
             </div>
         </div>
     )
 };
 
-export default BnBProperties;
+export default Favorites;

@@ -5,6 +5,7 @@ import axios from "axios";
 import Description from "./Description";
 import BnBProperties from "./BnBProperties";
 import Reservations from "./Reservations";
+import Favorites from "./Favorites";
 
 
 function Filter({ filterAvailable, searchQuery, onFilterAvailableChange, onSearchQueryChange }) {
@@ -136,19 +137,33 @@ function App(props) {
         </div>
         <div class="col-lg-11 col-12" style={{ "padding": "25px" }}>
           {(showBnBProperties) ? (
+            <>
+            <h3>All Properties</h3>
             <BnBProperties
               bnbproperties={bnbproperties}
               filterAvailable={filterAvailable}
               searchQuery={searchQuery}
             />
+            </>
           ) : (
             (showFavorites) ? (
-              {/* Favorite */ }
+              <>
+              <h3>My Favorite Properties</h3>
+              <Favorites
+                userid={1}
+                bnbproperties={bnbproperties}
+
+              />
+              </>
             ) : (
+              <>
+              <h3>My Reservations</h3>
+              <h5>View current and previous reservations.</h5>
               <Reservations
                 userid={4}
                 bnbproperties={bnbproperties}
               />
+              </>
             )
           )}
         </div>
