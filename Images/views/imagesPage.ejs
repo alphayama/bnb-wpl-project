@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Image Uploading</title>
+</head>
+
+<body>
+	<h1>To Upload Image on mongoDB</h1>
+	<hr>
+	<div>
+		<form action="/" method="POST" enctype="multipart/form-data">
+			<div>
+				<label for="host">Host</label>
+				<input type="text" id="host" placeholder="Host"
+					value="" name="host" required>
+			</div>
+			<div>
+				<label for="Property_name">Property name</label>
+				<input type="text" id="property_name" name="property_name" value=""
+						placeholder="property_name" required>
+				
+			</div>
+			<div>
+				<label for="location">Location</label>
+				<input type="text" id="location" name="location" value=""
+						placeholder="Location" required>
+				
+			</div>
+			<div>
+				<label for="description">Property Description</label>
+				<input type="text" id="description" name="description" value=""
+						placeholder="Description" required>
+				
+			</div>
+			<div>
+				<label for="night_fee">Night Fees</label>
+				<input type="text" id="night_fee" name="night_fee" value=""
+						placeholder="night fee" required>
+				
+			</div>
+			<div>
+				<label for="cleaning_fee">Cleaning Fees</label>
+				<input type="text" id="cleaning_fee" name="cleaning_fee" value=""
+						placeholder="cleaning fee" required>
+				
+			</div>
+			<div>
+				<label for="service_fee">Service Fees</label>
+				<input type="text" id="service_fee" name="service_fee" value=""
+						placeholder="service fee" required>
+				
+			</div>
+			<div>
+				<label for="bedrooms">Number of Bedrooms</label>
+				<input type="text" id="bedrooms" name="bedrooms" value=""
+						placeholder="bedrooms" required>
+				
+			</div>
+			<div>
+				<label for="amenities">Amenities</label>
+				<input type="text" id="amenities" name="amenities" value=""
+						placeholder="amenities">
+				
+			</div>
+			<div>
+				<label for="image">Upload Image</label>
+				<input type="file" id="image"
+					name="image" value="" required >
+			</div>
+			<div>
+				<button type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+
+	<hr>
+
+	<h1>Uploaded Images</h1>
+	<div>
+		<% items.forEach(function(image) { %>
+		<div>
+			<div>
+				<img src="data:image/<%=image.img.contentType%>;base64,
+					<%=image.img.data.toString('base64')%>">
+				<div>
+					<h5><%= image.name %></h5>
+					
+
+
+<p><%= image.desc %></p>
+
+
+
+				</div>
+			</div>
+		</div>
+		<% }) %>
+	</div>
+</body>
+
+</html>
