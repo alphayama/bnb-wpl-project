@@ -120,6 +120,11 @@ function App(props) {
                       <i class="bi bi-clock-history" style={{ "font-size": "30px" }}></i><br />My Reservations
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a onClick={() => { setShowBnBProperties(false); setShowFavorites(false); setShowReservations(false); }} class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="All Properties">
+                      <i class="bi bi-list-columns" style={{ "font-size": "30px" }}></i><br />Manage Properties
+                    </a>
+                  </li>
                 </ul>
                 {/* <div class="dropdown custom-sidebar">
                     <a href="#" class="d-flex align-items-center justify-content-center p-3 text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
@@ -156,6 +161,7 @@ function App(props) {
               />
               </>
             ) : (
+              (showReservations) ? (
               <>
               <h3>My Reservations</h3>
               <h5>View current and previous reservations.</h5>
@@ -164,6 +170,9 @@ function App(props) {
                 bnbproperties={bnbproperties}
               />
               </>
+              ):(
+                {/* Manage property */}
+              )
             )
           )}
         </div>
