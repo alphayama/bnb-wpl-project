@@ -28,7 +28,7 @@ function ManageProperties(props) {
     };
     const toggleListProperty = (property) => {
         console.log(property);
-        axios.put('http://localhost:3000/properties/'+property.property_id, {
+        axios.put('http://localhost:3000/properties/' + property.property_id, {
             "property_id": property.property_id,
             "property_name": property.property_name,
             "host": property.host,
@@ -51,7 +51,7 @@ function ManageProperties(props) {
     }
     return (
         <div>
-            <Button variant="primary" onClick={() => { setShowAddModal(true)}}>
+            <Button variant="primary" onClick={() => { setShowAddModal(true) }}>
                 Add a Property
             </Button>
             <hr />
@@ -77,10 +77,10 @@ function ManageProperties(props) {
                             (property.available) ?
                                 <Badge bg="danger" style={{ cursor: "pointer" }} onClick={() => {
                                     toggleListProperty(property);
-                                    }}>
+                                }}>
                                     Unlist Property
                                 </Badge> :
-                                <Badge bg="secondary" style={{ cursor: "pointer" }} onClick={() => {toggleListProperty(property)}}>
+                                <Badge bg="secondary" style={{ cursor: "pointer" }} onClick={() => { toggleListProperty(property) }}>
                                     Relist Property
                                 </Badge>
                         }
@@ -88,7 +88,8 @@ function ManageProperties(props) {
                     </ListGroup.Item>
                 )}
             </ListGroup>
-            {(showAddModal) ? <AddProperty /> : <></>}
+            {(showAddModal) ? <AddProperty show={showAddModal}
+                onHide={() => setShowAddModal(false)} /> : <></>}
             {(showModifyModal) ? <ModifyProperty property={currentProperty} /> : <></>}
         </div>
     );

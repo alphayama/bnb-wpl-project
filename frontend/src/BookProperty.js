@@ -31,7 +31,6 @@ function BookProperty(props) {
                 return true
             }
         }
-        console.log("false")
         return false
     }
 
