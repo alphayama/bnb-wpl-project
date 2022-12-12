@@ -24,11 +24,6 @@ function BookProperty(props) {
             });
     };
 
-    function addOneDay(date) {
-        date.setDate(date.getDate() + 1);
-        return date;
-    }
-
     const isNotValid = () => {
         for (const reservation in reservations) {
             let data = reservations[reservation]
