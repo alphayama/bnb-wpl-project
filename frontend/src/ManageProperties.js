@@ -61,9 +61,9 @@ function ManageProperties(props) {
                         as="li"
                         className="d-flex justify-content-between align-items-start">
                         <div className="ms-2 me-auto">
-                            {(property.available) ? <div className="fw-bold">{property.property_name}</div> :
+                            {(property?.available) ? <div className="fw-bold">{property?.property_name}</div> :
                                 <s className="fw-bold">{property.property_name}</s>}
-                            <div>{property.location}</div>
+                            <div>{property?.location}</div>
                         </div>
 
                         <Badge bg="primary" style={{ cursor: "pointer", "margin-right": "5px" }} onClick={() => {
