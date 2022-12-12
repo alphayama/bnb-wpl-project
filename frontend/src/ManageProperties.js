@@ -40,7 +40,7 @@ function ManageProperties(props) {
             "service_fee": property.service_fee,
             "bedrooms": property.bedrooms,
             "amenities": property.amenities,
-            "images": properties.images
+            "images": property.images
         })
             .then(response => {
                 console.log(response.data)
@@ -90,7 +90,9 @@ function ManageProperties(props) {
             </ListGroup>
             {(showAddModal) ? <AddProperty show={showAddModal}
                 onHide={() => setShowAddModal(false)} /> : <></>}
-            {(showModifyModal) ? <ModifyProperty property={currentProperty} /> : <></>}
+            {(showModifyModal) ? <ModifyProperty show={showModifyModal}
+                onHide={() => setShowModifyModal(false)}
+                property={currentProperty} /> : <></>}
         </div>
     );
 }

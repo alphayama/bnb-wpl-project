@@ -71,7 +71,7 @@ router.put('/:id', function (req, res) {
 				service_fee: req.body.service_fee,
 				bedrooms: req.body.bedrooms,
 				amenities: req.body.amenities,
-				description: req.body.desc
+				description: req.body.description
 			}
 		}, function (err, property) {
 			if (err) {

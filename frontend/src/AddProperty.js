@@ -20,9 +20,9 @@ function AddProperty(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/properties', {
-            property_id: UUID(3).uuid(),
+            property_id: UUID(1).uuid(),
             available: true,
-            host: 3,
+            host: 1,
             property_name: e.target.property_name.value,
             location: e.target.location.value,
             description: e.target.description.value,
