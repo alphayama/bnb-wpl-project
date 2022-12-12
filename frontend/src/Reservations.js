@@ -55,11 +55,11 @@ function Reservations(props) {
                                 <div className="fw-bold">{item.property_name}</div>
                                 {item.location}
                                 <div className="fst-italic">
-                                    {new Date(reservation?.start_date)
+                                    {new Date(reservation?.start_date.replace(/-/g, '\/').replace(/T.+/, ''))
                                         .toDateString()
                                         .toLocaleString("en-US")}{" "}
                                     -{" "}
-                                    {new Date(reservation?.end_date)
+                                    {new Date(reservation?.end_date.replace(/-/g, '\/').replace(/T.+/, ''))
                                         .toDateString()
                                         .toLocaleString("en-US")}
                                 </div>

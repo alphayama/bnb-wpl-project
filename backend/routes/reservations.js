@@ -33,6 +33,8 @@ router.get('/:id', function (req, res) {
 
 // Adds a new reservation
 router.post('/', function (req, res) {
+	console.log(req.body)
+	// console.log(req.body.data.start_date)
 	collection.find({ property_id: req.body.property_id }, function (err, reservations) {
 		if (err) {
 			res.status(400)
