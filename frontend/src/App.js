@@ -6,6 +6,7 @@ import Description from "./Description";
 import BnBProperties from "./BnBProperties";
 import Reservations from "./Reservations";
 import Favorites from "./Favorites";
+import ManageProperties from "./ManageProperties";
 
 
 function Filter({ filterAvailable, searchQuery, onFilterAvailableChange, onSearchQueryChange }) {
@@ -41,6 +42,7 @@ function App(props) {
   const [showBnBProperties, setShowBnBProperties] = useState(true);
   const [showReservations, setShowReservations] = useState(true);
   const [showFavorites, setShowFavorites] = useState(true);
+  const [reviews, setReviews] = React.useState([]);
 
   useEffect(() => {
     componentDidMount();
@@ -53,7 +55,14 @@ function App(props) {
       }).catch(error => {
         console.log(error);
       })
+    axios.get('http://localhost:3000/reviews')
+      .then(response => {
+        setReviews(response.data);
+      }).catch(error => {
+        console.log(error);
+      })
   }
+  console.log(reviews);
 
   return (
     <div>
@@ -148,6 +157,7 @@ function App(props) {
               bnbproperties={bnbproperties}
               filterAvailable={filterAvailable}
               searchQuery={searchQuery}
+              reviews={reviews}
             />
             </>
           ) : (
@@ -171,7 +181,12 @@ function App(props) {
               />
               </>
               ):(
-                {/* Manage property */}
+                <>
+                  <h3>Manage Properties</h3>
+                  <ManageProperties
+                    userid={1}
+                  />
+                </>
               )
             )
           )}
