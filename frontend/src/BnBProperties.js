@@ -1,12 +1,30 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Description from "./Description";
+import PostReview from "./PostReview";
 
 function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
     const filteredProperties = []
     const [modalShow, setModalShow] = React.useState(false);
+    const [reviewModalShow, setReviewModalShow] = React.useState(false);
     const [fullscreen, setFullscreen] = useState(true);
     const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
+
+    // function getCurrentBnBReview(bnb){
+    //     console.log(bnb.property_id);
+    //     let data=null;
+    //     axios.get('http://localhost:3000/reviews?propertyid=' + bnb.property_id)
+    //         .then(response => {
+    //             setReviews(response.data);
+    //             data= response.data;
+    //         }).catch(error => {
+    //             console.log(error);
+    //         })
+    //     return data;
+    // }
+
+    // console.log(props?.reviews);
 
     bnbproperties.forEach(bnb => {
         if (bnb?.property_name?.toLowerCase().indexOf(searchQuery?.toLowerCase()) === -1 &&
@@ -53,21 +71,32 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
                             </button>
                         </div>
                         <br />
-                        <h3 onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>{bnb.property_name}</h3>
-                        <div onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
+                        <h3 onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb); }}>{bnb.property_name}</h3>
+                        <div onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb); }}>
                             <h6>{bnb.location}</h6>
                             <h6><em>${bnb.night_fee}/Night</em></h6>
                             <p>{bnb.description?.length <= 300 ? bnb.description : bnb.description?.substring(0, 298) + "..."}</p>
                         </div>
-                        <Button variant="secondary" onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb) }}>
+                        <Button variant="secondary" onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb); /*console.log(reviews) */}}>
                             Details
+                        </Button> <span>   </span>
+                        <Button variant="warning" onClick={() => { setReviewModalShow(true); setCurrentBnbProperty(bnb); /*console.log(reviews) */}}>
+                            <i class="bi bi-pencil-square"></i> Post Review
                         </Button>
                         <Description
                             show={modalShow}
                             onHide={() => setModalShow(false)}
                             fullscreen={fullscreen}
                             bnb={currentBnbProperty}
+                            reviews={props?.reviews}
                             isFavorite={true}
+                            user_id={1}
+                        />
+                        <PostReview
+                            show={reviewModalShow}
+                            onHide={() => setReviewModalShow(false)}
+                            bnb={currentBnbProperty}
+                            userid={1}
                         />
                     </div>)}
             </div>
