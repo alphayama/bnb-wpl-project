@@ -40,30 +40,17 @@ router.get('/:id', function (req, res) {
 
 // Adds a new favorite
 router.post('/', function (req, res) {
-    collection.find({ property_id: req.body.property_id }, function (err, favorites) {
+    collection.insert({
+        user_id: req.body.user_id,
+        property_id: req.body.property_id
+    }, function (err, favorite) {
         if (err) {
             res.status(400)
             return res.json({ "message": err });
         } else {
-            for (const favorite in favorites) {
-                data = favorites[favorite]
-                if (!(new Date(req.body.start_date) > data["end_date"] || new Date(req.body.end_date) < data["start_date"])) {
-                    return res.json({ "message": "this date range is not available" })
-                }
-            }
-            collection.insert({
-                user_id: req.body.user_id,
-                property_id: req.body.property_id
-            }, function (err, favorite) {
-                if (err) {
-                    res.status(400)
-                    return res.json({ "message": err });
-                } else {
-                    return res.json(favorite)
-                }
-            });
+            return res.json(favorite)
         }
-    })
+    });
 });
 
 // Update an existing favorite

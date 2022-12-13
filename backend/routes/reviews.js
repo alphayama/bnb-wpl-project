@@ -40,14 +40,12 @@ router.get('/:id', function (req, res) {
 
 // Adds a new review
 router.post('/', function (req, res) {
-    collection.find({ property_id: req.body.property_id }, function (err, reviews) {
-        if (err) {
-            res.status(400)
-            return res.json({ "message": err });
-        } else {
+    
             collection.insert({
                 user_id: req.body.user_id,
-                property_id: req.body.property_id
+                property_id: req.body.property_id,
+                comments: req.body.user_id,
+                stars: req.body.stars
             }, function (err, review) {
                 if (err) {
                     res.status(400)
@@ -56,9 +54,7 @@ router.post('/', function (req, res) {
                     return res.json(review)
                 }
             });
-        }
-    })
-});
+    });
 
 // Update an existing review
 router.put('/:id', function (req, res) {

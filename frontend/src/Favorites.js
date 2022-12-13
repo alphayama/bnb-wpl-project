@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Description from "./Description";
 
 function Favorites(props) {
-    const favoriteProperties = new Set()
+    const favoriteProperties = new Set();
+    const favoritePropertiesIDs = new Map();
     const [modalShow, setModalShow] = React.useState(false);
     const [fullscreen, setFullscreen] = useState(true);
     const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
@@ -34,7 +35,8 @@ function Favorites(props) {
 
     favorites?.forEach(favorite => {
         
-            favoriteProperties.add(favorite.property_id)
+            favoriteProperties.add(favorite.property_id);
+            favoritePropertiesIDs.set(favorite.property_id,favorite._id);
     });
 
     // bnbproperties.forEach(bnb => {
@@ -99,6 +101,7 @@ function Favorites(props) {
                             fullscreen={fullscreen}
                             bnb={currentBnbProperty}
                             isFavorite={false}
+                            favoritePropertyID={favoritePropertiesIDs.get(bnb.property_id)}
                         />
                     </div>):(<></>)
                     )}
