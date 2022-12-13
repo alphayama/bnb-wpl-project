@@ -44,7 +44,7 @@ router.post('/', function (req, res) {
             collection.insert({
                 user_id: req.body.user_id,
                 property_id: req.body.property_id,
-                comments: req.body.user_id,
+                comments: req.body.comments,
                 stars: req.body.stars
             }, function (err, review) {
                 if (err) {

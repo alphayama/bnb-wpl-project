@@ -80,9 +80,7 @@ function BnBProperties({ props, bnbproperties, filterAvailable, searchQuery }) {
                         <Button variant="secondary" onClick={() => { setModalShow(true); setCurrentBnbProperty(bnb); /*console.log(reviews) */}}>
                             Details
                         </Button> <span>   </span>
-                        <Button variant="warning" onClick={() => { setReviewModalShow(true); setCurrentBnbProperty(bnb); /*console.log(reviews) */}}>
-                            <i class="bi bi-pencil-square"></i> Post Review
-                        </Button>
+                        
                         <Description
                             show={modalShow}
                             onHide={() => setModalShow(false)}

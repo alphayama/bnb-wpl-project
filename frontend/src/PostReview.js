@@ -9,7 +9,7 @@ function PostReview(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3000/reviews', {
-            property_id: props?.bnb?.property_id,
+            property_id: props?.property_id,
             user_id: props?.userid,
             comments: e.target.comments.value,
             stars: parseInt(e.target.rating.value)

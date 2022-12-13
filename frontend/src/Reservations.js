@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
+import PostReview from "./PostReview";
 
 function Reservations(props) {
     const [show, setShow] = useState(false);
     const [reservations, setReservations] = useState(null);
+    const [reviewModalShow, setReviewModalShow] = React.useState(false);
+    const [currentBnbProperty, setCurrentBnbProperty] = React.useState();
+
     useEffect(() => {
         componentDidMount();
     }, []);
@@ -64,6 +68,12 @@ function Reservations(props) {
                                         .toLocaleString("en-US")}
                                 </div>
                             </div>
+                            <Badge bg="warning" pill style={{ cursor: "pointer" }} onClick={() => {
+                                setReviewModalShow(true);
+                                setCurrentBnbProperty(reservation.property_id)
+                            }}>
+                                <i class="bi bi-pencil-square"></i> Post a Review
+                            </Badge>
                             {new Date().getTime() <=
                                 new Date(
                                     startDate.setHours(startDate.getHours() - 48)
@@ -79,6 +89,12 @@ function Reservations(props) {
                     );
                 })}
             </ListGroup>
+            <PostReview
+                show={reviewModalShow}
+                onHide={() => setReviewModalShow(false)}
+                property_id={currentBnbProperty}
+                userid={1}
+            />
         </div>
     );
 }
