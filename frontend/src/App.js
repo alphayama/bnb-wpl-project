@@ -78,7 +78,7 @@ function App(props) {
             <div class="col-lg-9 col-12" style={{ display: "flex" }}>
               <div class="col-lg-12 col-12 d-flex flex-column">
                 {/* <label style={{ color: "white", width: "100%" }}>DESTINATION</label> */}
-                <input id="destination" style={{ margin: "10px" }} type="text" name="Destination" placeholder="Search Properties" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                <input id="destination" style={{ margin: "10px" }} type="text" name="Destination" placeholder="Search Properties by Name or City...." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
               </div>
               {/* <div class="col-lg-5 col-12 d-flex" >
                   <div class="row" style={{ margin: "0", padding: "0" }}>
